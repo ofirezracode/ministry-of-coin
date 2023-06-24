@@ -1,0 +1,24 @@
+footer {
+  padding: 1.2rem 1.2rem;
+  background-color: $slate-400;
+  color: $slate-900;
+  height: 8rem;
+
+  &.glass {
+    background-color: rgb(148, 163, 184, 0.75);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-block-end: 1px solid rgba(148, 163, 184, 0.55);
+  }
+
+  .footer-container {
+    margin: auto;
+    width: 40rem;
+    height: 100%;
+    font-size: 1.6rem;
+    font-family: inherit;
+    gap: 1.6rem;
+    pre {
+      font-family: inherit;
+    }
+  }
+}

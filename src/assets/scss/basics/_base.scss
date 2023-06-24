@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $slate-800;
+  color: $slate-100;
+  font-family: "Lato", sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  margin: 2rem auto 4.8rem;
+  width: 100%;
+  padding-inline: 2.4rem;
+  flex: 1;
+
+  @include for-normal-layout {
+    width: 80rem;
+  }
+
+  @include for-wide-layout {
+    width: 110rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Work Sans", sans-serif;
+}
+
+h1 {
+  font-size: 4.8rem;
+  color: $slate-300;
+  margin-block-end: 1.8rem;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0.6rem 1rem;
+
+  font-family: inherit;
+  color: $emerald-400;
+  background-color: transparent;
+
+  border: 2px solid $emerald-400;
+  border-radius: 16px;
+
+  transition: all 0.1s;
+  &:hover {
+    background-color: $emerald-400;
+    color: $slate-900;
+  }
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.bitcoin {
+  color: $btc-clr1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.card {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background-color: rgba(241, 245, 249, 0.1);
+
+  // background: linear-gradient(
+  //   135deg,
+  //   rgba(255, 255, 255, 0.1),
+  //   rgba(255, 255, 255, 0)
+  // );
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.1s;
+}

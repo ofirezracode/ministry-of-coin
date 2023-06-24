@@ -1,0 +1,9 @@
+.statistics {
+  .chart-container {
+    padding: 2.4rem;
+    height: 30rem;
+    &:not(:last-of-type) {
+      margin-block-end: 3.6rem;
+    }
+  }
+}

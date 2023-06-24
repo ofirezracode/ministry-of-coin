@@ -1,0 +1,29 @@
+.contact-filter {
+  margin-block-end: 2.4rem;
+  width: 100%;
+  input {
+    padding: 0.8rem 1.2rem;
+    width: 100%;
+
+    font-size: 1.6rem;
+    font-family: inherit;
+    background-color: transparent;
+    border: none;
+
+    color: $emerald-400;
+    &:focus {
+      outline: 2px solid $emerald-400;
+      border-radius: 12px;
+    }
+    &::placeholder {
+      color: $slate-400;
+    }
+  }
+  @include for-normal-layout {
+    width: 75%;
+  }
+
+  @include for-wide-layout {
+    width: 51.4rem;
+  }
+}

@@ -1,0 +1,30 @@
+.contact-preview {
+  padding: 1.2rem;
+  color: $slate-300;
+
+  h3 {
+    color: $emerald-400;
+    font-size: 1.8rem;
+    margin-block-end: 0.4rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+
+    &.contact-email {
+      margin-block-end: 0.2rem;
+    }
+
+    &.contact-phone {
+      margin-block-end: 1.2rem;
+    }
+  }
+
+  .button-container {
+    gap: 0.8rem;
+  }
+
+  &:hover {
+    background-color: rgba(241, 245, 249, 0.2);
+  }
+}
