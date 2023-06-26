@@ -1,6 +1,6 @@
 <template>
   <main class="home">
-    <h1>Coins</h1>
+    <h1>Home</h1>
     <div class="user-info flex justify-between card">
       <p class="user-name">{{ user.name }}</p>
       <p class="user-balance">{{ user.balance }}</p>
@@ -13,12 +13,17 @@
         </p>
       </header>
     </section>
+    <TransactionsList
+      :isUserTransactions="true"
+      :transactions="user.transactions"
+    />
   </main>
 </template>
 
 <script>
-import { bitcoinService } from "../services/bitcoinService";
-import { userService } from "../services/userService";
+import { bitcoinService } from "../services/bitcoin.service";
+import { userService } from "../services/user.service";
+import TransactionsList from "../components/TransactionsList.vue";
 
 export default {
   data() {
@@ -29,7 +34,8 @@ export default {
   },
   async created() {
     this.rate = await bitcoinService.getRate();
-    this.user = userService.getUser();
+    this.user = userService.getLoggedInUser();
   },
+  components: { TransactionsList },
 };
 </script>

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { bitcoinService } from "../services/bitcoinService";
+import { bitcoinService } from "../services/bitcoin.service";
 import {
   Chart as ChartJS,
   CategoryScale,

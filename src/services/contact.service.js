@@ -1,5 +1,9 @@
+import { storageService } from "./async-storage.service";
+import { utilService } from "./utilService";
+
 export const contactService = {
   getContacts,
+  filterContacts,
   getContactById,
   deleteContact,
   saveContact,
@@ -124,6 +128,9 @@ const contacts = [
   },
 ];
 
+utilService.clearStorage("contacts");
+utilService.saveToStorage("contacts", contacts);
+
 function sort(arr) {
   return arr.sort((a, b) => {
     if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
@@ -137,55 +144,31 @@ function sort(arr) {
   });
 }
 
-function getContacts(filterBy = null) {
-  return new Promise((resolve, reject) => {
-    let contactsToReturn = contacts;
-    if (filterBy && filterBy.term) {
-      contactsToReturn = filter(filterBy.term);
-    }
-    resolve(sort(contactsToReturn));
-  });
+async function getContacts() {
+  return sort(await storageService.query("contacts"));
 }
 
-function getContactById(id) {
-  return new Promise((resolve, reject) => {
-    const contact = contacts.find((contact) => contact._id === id);
-    contact ? resolve(contact) : reject(`Contact id ${id} not found!`);
-  });
+function filterContacts(contacts = [], filterBy = null) {
+  if (filterBy && filterBy.term && contacts.length > 0) {
+    return sort(filter(filterBy.term));
+  }
+  return sort(contacts);
 }
 
-function deleteContact(id) {
-  return new Promise((resolve, reject) => {
-    let contactsToReturn = contacts.slice();
-    const index = contacts.findIndex((contact) => contact._id === id);
-    if (index !== -1) {
-      contacts.splice(index, 1);
-    }
-    contactsToReturn = contacts.filter((contact) => contact._id !== id);
-    resolve(contactsToReturn);
-  });
+async function getContactById(id) {
+  return await storageService.get("contacts", id);
 }
 
-function _updateContact(contact) {
-  return new Promise((resolve, reject) => {
-    const index = contacts.findIndex((c) => contact._id === c._id);
-    if (index !== -1) {
-      contacts[index] = contact;
-    }
-    resolve(contact);
-  });
+async function deleteContact(id) {
+  await storageService.remove("contacts", id);
 }
 
-function _addContact(contact) {
-  return new Promise((resolve, reject) => {
-    contact._id = _makeId();
-    contacts.push(contact);
-    resolve(contact);
-  });
-}
-
-function saveContact(contact) {
-  return contact._id ? _updateContact(contact) : _addContact(contact);
+async function saveContact(contact) {
+  if (contact._id) {
+    return await storageService.put("contacts", contact);
+  } else {
+    return await storageService.post("contacts", contact);
+  }
 }
 
 function getEmptyContact() {
@@ -205,14 +188,4 @@ function filter(term) {
       contact.email.toLocaleLowerCase().includes(term)
     );
   });
-}
-
-function _makeId(length = 10) {
-  var txt = "";
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (var i = 0; i < length; i++) {
-    txt += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return txt;
 }

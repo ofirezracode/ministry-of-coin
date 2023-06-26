@@ -1,8 +1,10 @@
 export const utilService = {
   makeId,
   getRandomIntInclusive,
+  formatDate,
   saveToStorage,
   loadFromStorage,
+  clearStorage,
   debounce,
 };
 
@@ -31,6 +33,20 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
   const data = localStorage.getItem(key);
   return data ? JSON.parse(data) : undefined;
+}
+
+function clearStorage(key) {
+  localStorage.removeItem(key);
+}
+
+function formatDate(timestamp, locale = "en-UK") {
+  const date = new Date(timestamp);
+  const options = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  };
+  return date.toLocaleDateString(locale, options);
 }
 
 function debounce(func, delay) {

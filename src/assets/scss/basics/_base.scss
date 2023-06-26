@@ -73,6 +73,24 @@ button {
     background-color: $emerald-400;
     color: $slate-900;
   }
+
+  &.dark-button {
+    color: $emerald-800;
+    border: 2px solid $emerald-800;
+    &:hover {
+      background-color: $emerald-800;
+      color: $slate-100;
+    }
+  }
+
+  &.slate-button {
+    color: $slate-900;
+    border: 2px solid $slate-900;
+    &:hover {
+      background-color: $slate-900;
+      color: $slate-400;
+    }
+  }
 }
 
 button,

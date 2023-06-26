@@ -1,16 +1,14 @@
 .contact-details {
-  .arrow {
-    margin-inline-start: 0.2rem;
-    margin-inline-end: 0.8rem;
-  }
-  .card {
+  > .card {
     padding: 1.2rem;
     color: $slate-300;
     width: fit-content;
-    margin: auto;
+    margin: 2.4rem auto 0;
 
     display: grid;
-    grid-template-columns: max-content 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    min-width: 54.2rem;
 
     .contact-info {
       h3 {
@@ -25,11 +23,23 @@
         &.contact-email {
           margin-block-end: 0.2rem;
         }
+
+        &.contact-phone {
+          margin-block-end: 1.2rem;
+        }
+      }
+
+      .button-container {
+        button {
+          width: 6.4rem;
+        }
       }
     }
 
     img {
       margin-block-end: -1.2rem;
+      grid-column: 2;
+      grid-row: 1 / span 2;
     }
   }
 }

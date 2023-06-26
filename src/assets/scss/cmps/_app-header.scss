@@ -35,6 +35,12 @@
       &.router-link-active {
         background-color: $yellow-400;
       }
+
+      &.logout-btn {
+        height: 2.8rem;
+        border-left: 1px solid $slate-600;
+        align-self: center;
+      }
     }
   }
 }

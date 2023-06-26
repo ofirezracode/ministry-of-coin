@@ -12,6 +12,8 @@
 @import "views/_contact-details.scss";
 @import "views/_contacts.scss";
 @import "views/_statistics.scss";
+@import "views/_contact-edit.scss";
+@import "views/_login.scss";
 
 // Components
 @import "cmps/_app-header.scss";
@@ -19,3 +21,8 @@
 @import "cmps/_contact-list.scss";
 @import "cmps/_contact-preview.scss";
 @import "cmps/_contact-filter.scss";
+@import "cmps/_contacts-transfer-funds.scss";
+@import "cmps/_transactions-list.scss";
+
+// Base
+@import "cmps/base/_back-btn.scss";

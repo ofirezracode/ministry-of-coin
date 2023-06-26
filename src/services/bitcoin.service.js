@@ -62,22 +62,13 @@ function _buildChartData(resData, label) {
     ],
   };
   const latestValues = resData.values.slice(resData.values.length - 10);
-  const labels = latestValues.map((value) => _formatDate(value.x, "en-UK"));
+  const labels = latestValues.map((value) =>
+    utilService.formatDate(value.x * 1000, "en-UK")
+  );
   const data = latestValues.map((value) => value.y);
   dataObj.labels = labels;
   dataObj.datasets[0].data = data;
   return dataObj;
-}
-
-function _formatDate(timestamp, locale) {
-  timestamp = timestamp * 1000;
-  const date = new Date(timestamp);
-  const options = {
-    day: "2-digit",
-    month: "2-digit",
-    year: "2-digit",
-  };
-  return date.toLocaleDateString(locale, options);
 }
 
 function getEmptyDataSet() {
