@@ -1,0 +1,1 @@
+import{_ as r,r as s,o as a,k as n,w as c,a as t,b as _}from"./index-ef6ac8cc.js";const p={props:{url:{type:String,required:!0}}},u=t("button",null,[t("span",{class:"arrow"},"←"),_("Back")],-1);function i(l,d,e,k,B,f){const o=s("RouterLink");return a(),n(o,{to:`/${e.url}`},{default:c(()=>[u]),_:1},8,["to"])}const x=r(p,[["render",i]]);export{x as B};
